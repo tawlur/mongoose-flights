@@ -29,10 +29,10 @@ function create(req, res) {
       if (req.body[key] === '') delete req.body[key];
     }
     const flight = new Flight(req.body);
-    movie.save(function(err) {
+    flight.save(function(err) {
       if (err) return res.redirect('/flights/new');
-      console.log(movie);
-      res.redirect(`/flights/${movie._id}`);
+      console.log(flight);
+      res.redirect(`/flights/${flight._id}`);
     });
   }
   
