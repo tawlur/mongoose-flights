@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FLIGHT SHOW</title>
+</head>
 
+
+<body>
     <h1>SHOW EJS</h1>
 <p>Airline: <%= flight.airline %> </p>
 <p>Airport: <%= flight.airport %></p>
 <p>FlightNo: <%= flight.flightNo %></p>
 <p>Flight Date <%= flight.depart %></p>
 
-<form action="">
+<form action="/flights/<%=flight._id%>/destinations" method="POST">
 <input type="text" name="airport">
 <input type="date" name="arrival">
 <input type="submit" value="Add Destination">
 
 </form>
 
+<p>Destination: </p>
+<ul>
 
-</head>
-
-
-<body>
+    <% flight.destinations.forEach(function(eachDestination) { %>
+        <li><%= eachDestination.airport %>, <%= eachDestination.arrival %></li>
+        <%})%>
+    </ul>
    
     <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
 
@@ -33,20 +38,19 @@
                     <th>Seat</th>
                     <th>Price $</th>
                 </tr>
-                </th>
             </thead>
             <tbody>
                 <% tickets.forEach(function(eachTicket) { %>
-                    <% }) %>
                     <tr>
-                        <td><%= eachTicke.seat %></td>
-                        <td></td>
+                        <td><%= eachTicket.seat %></td>
+                        <td><%= eachTicket.price %></td>
                     </tr>
-            </tbody>
-        </table>
-    <% } else { %>
-    <h5>No tickets yet</h5>
-<% } %>
-
+                    <% }) %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h5>No tickets yet</h5>
+                <% } %>
+                
 </body>
 </html>
