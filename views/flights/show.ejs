@@ -6,9 +6,47 @@
     <title>FLIGHT SHOW</title>
 
     <h1>SHOW EJS</h1>
+<p>Airline: <%= flight.airline %> </p>
+<p>Airport: <%= flight.airport %></p>
+<p>FlightNo: <%= flight.flightNo %></p>
+<p>Flight Date <%= flight.depart %></p>
+
+<form action="">
+<input type="text" name="airport">
+<input type="date" name="arrival">
+<input type="submit" value="Add Destination">
+
+</form>
+
 
 </head>
+
+
 <body>
-    
+   
+    <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
+
+    <% if(tickets.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seat</th>
+                    <th>Price $</th>
+                </tr>
+                </th>
+            </thead>
+            <tbody>
+                <% tickets.forEach(function(eachTicket) { %>
+                    <% }) %>
+                    <tr>
+                        <td><%= eachTicke.seat %></td>
+                        <td></td>
+                    </tr>
+            </tbody>
+        </table>
+    <% } else { %>
+    <h5>No tickets yet</h5>
+<% } %>
+
 </body>
 </html>
